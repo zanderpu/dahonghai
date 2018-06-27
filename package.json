@@ -1,0 +1,21 @@
+{
+  "name": "dhh",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "gulp -ws"
+  },
+  "author": "Puter",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.6.2",
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-rename": "^1.3.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "yargs": "^11.0.0"
+  }
+}

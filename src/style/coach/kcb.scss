@@ -1,0 +1,52 @@
+.coach_body{
+	margin-bottom: 66px;
+}
+.panel-kcb{
+	background: #fff;
+	margin-top: 10px;
+}
+.panel-header{
+	border-bottom: 1px solid #f0f0f0;
+	padding:10px;
+	font-size:18px;
+	color:#232323;
+	.icon-kcb{
+		font-size:22px;
+		vertical-align: middle;
+		margin-top: -4px;
+		display: inline-block;
+	}
+	a{
+		font-size:16px;
+		color:#232323;
+		margin-top: 2px;
+	}
+}
+.kcb_item{
+	padding:10px 0;
+	& + .kcb_item{
+		border-top: 1px solid #f0f0f0;
+	}
+	.weui-flex__item{
+		text-align: center;
+		font-size:15px;
+		& + .weui-flex__item{
+			border-left: 1px solid #f0f0f0;
+		}
+	}
+	.stress{
+		color:#db4c3e;
+	}
+	.kcb_people_num{
+		padding-top:10px;
+		font-size:18px;
+	}
+	.kcb_disable{
+		color: #999;
+	}
+}
+.kcb_item_title{
+	.weui-flex__item{
+		padding:10px 0;
+	}
+}

@@ -1,0 +1,69 @@
+.coach_me{
+	padding:20px 10px;
+	background: url(../images/me_bg.png) 0 0 no-repeat;
+	background-size:auto 160px;
+}
+.me_header{
+	border-radius:10px;
+	background: #fff;
+	box-shadow: 0 0 10px #ddd;
+	.weui-media-box{
+		padding:20px 0 20px 20px;
+	}
+	.weui-media-box__hd{
+		width:80px;
+		height:80px;
+	}
+	.weui-media-box__thumb{
+		border-radius:50%;
+	}
+	.icon-man{
+		color:#3380de;
+		margin-left: 5px;
+	}
+	.weui-media-box__title{
+		margin-bottom: 5px;
+		font-size:16px;
+	}
+	.weui-media-box__desc{
+		color:#232323;
+		font-size:16px;
+
+	}
+}
+.me_header_items{
+	text-align: center;
+	padding:16px 0;
+	border-top:1px solid #f0f0f0;
+	color:#777;
+	.weui-flex__item + .weui-flex__item{
+		border-left: 1px solid #f0f0f0;
+	}
+	.stress{
+		color:#db4c3e;
+		font-size:22px;
+		margin-top: 5px;
+	}
+}
+.me_contact{
+	background: #db4c3e;
+	color:#fff;
+	font-size:16px;
+	border-radius:16px 0 0 16px;
+	padding:3px 10px 3px 18px;
+}
+.me-function-lists{
+	border-radius:10px;
+	&.weui-cells{
+		&:after,
+		&:before{
+			display: none;
+		}
+	}
+	.weui-cell{
+		padding:15px;
+		&:before{
+			left:0;
+		}
+	}
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我是教练-我的学员</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg">
+    <div id="page">
+        <div class="list-filter">
+            <div class="weui-flex list-filter-header" v-if="filter!=3">
+                <div class="weui-flex__item" v-on:click="onFilter(1)">
+                    筛选<i class="dhhfont icon-down-trangle"></i>
+                </div>
+                <div class="weui-flex__item" v-on:click="onFilter(2)">
+                    类型<i class="dhhfont icon-down-trangle"></i>
+                </div>
+                <div class="weui-flex__item" v-on:click="onFilter(3)">
+                    搜索<i class="dhhfont icon-search"></i>
+                </div>
+            </div>
+            <div class="header_search" v-if="filter==3" >
+                <div class="search_input weui-flex">
+                    <i class="dhhfont icon-search"></i>
+                    <input type="text" class="weui-flex__item" name="search" placeholder="请输入你想搜索的内容" autofocus="autofocus">
+                </div>
+            </div>
+        </div>
+        <div class="weui-mask weui-animate-fade-in list-filter-choice-mask" v-if="filter>0" v-on:click="onCancelFilter"></div>
+        <div class="list-filter-choice" v-if="filter>0">
+            <div class="filter-screen" v-if="filter==1">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access weui-cell_sex" href="javascript:;" v-on:click="onSelectSex">
+                        <div class="weui-cell__bd">
+                            <p>性别</p>
+                        </div>
+                        <div class="weui-cell__ft">男</div>
+                    </a>
+                    <a class="weui-cell weui-cell_access" href="javascript:;" v-on:click="onSelectArea">
+                        <div class="weui-cell__bd">
+                            <p>地区</p>
+                        </div>
+                        <div class="weui-cell__ft">重庆</div>
+                    </a>
+
+                    <div class="weui-cell weui-cell_select weui-cell_select-after">
+                        <div class="weui-cell__hd">
+                            <label for="select_school" class="weui-label">学校</label>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <select class="weui-select" id="select_school" name="select2">
+                                <option value="1">好学校</option>
+                                <option value="2">好学校2</option>
+                                <option value="3">好学校3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="filter-types" v-if="filter==2">
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>正在进行</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>已完成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-warp" v-if="filter==3">
+                历史搜索
+                <div class="search-keys">
+                    <a href="javascript:;" class="search-key">王双林</a><a href="javascript:;" class="search-key">王双林</a><a href="javascript:;" class="search-key">王双林</a>
+                </div>
+            </div>
+        </div>
+        <div class="student-list">
+            <div class="weui-panel__bd">
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-man"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+                <a href="http://www.baidu.com" class="weui-media-box weui-media-box_appmsg student-list-item">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <i class="dhhfont icon-girl"></i>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <span class="weui-badge">C1</span>学习进度：科目二
+                        </div>
+                        <p class="weui-media-box__desc">江北松树桥场地</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-tabbar tabbar-coach">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <i class="weui-tabbar__icon dhhfont icon-wdxy"></i>
+            <p class="weui-tabbar__label">我的学员</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-kcb"></i>
+            <p class="weui-tabbar__label">课程表</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-me"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../style/js/common.js"></script>
+    <script type="text/javascript">
+        var v_page = new Vue({
+            el: '#page',
+            data:{
+                filter:0
+            },
+            methods:{
+                onCancelFilter:function(){
+                    v_page.filter = 0;
+                },
+                onFilter:function(index){
+                    v_page.filter = index;
+                    if(index==3){
+                        setTimeout(function(){
+                            $('input[name=search]').trigger("click").focus();
+                        },100);
+                    }
+                },
+                onSelectSex:function(){
+                    weui.actionSheet([{
+                        label: '男',
+                        onClick: function () {
+                            console.log('男');
+                        }
+                    },{
+                        label: '女',
+                        onClick: function () {
+                            console.log('女');
+                        }
+                    }]);
+                },
+                onSelectArea:function(){
+                    weui.picker([
+                    {
+                        label: '飞机票',
+                        value: 0,
+                        children: [
+                            {
+                                label: '经济舱',
+                                value: 1
+                            },
+                            {
+                                label: '商务舱',
+                                value: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '火车票',
+                        value: 1,
+                        children: [
+                            {
+                                label: '卧铺',
+                                value: 1
+                            },
+                            {
+                                label: '坐票',
+                                value: 2
+                            },
+                            {
+                                label: '站票',
+                                value: 3
+                            }
+                        ]
+                    },
+                    {
+                        label: '汽车票',
+                        value: 3,
+                        children: [
+                            {
+                                label: '快班',
+                                value: 1
+                            },
+                            {
+                                label: '普通',
+                                value: 2
+                            }
+                        ]
+                    }
+                    ], {
+                       container: 'body',
+                       defaultValue: [1, 3],
+                       onChange: function (result) {
+                           console.log(result)
+                       },
+                       onConfirm: function (result) {
+                           console.log(result)
+                       }
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
