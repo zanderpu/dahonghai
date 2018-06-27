@@ -156,3 +156,52 @@
 		
 	}
 }
+
+.student-info{
+	background: #fff;
+	border-radius:10px;
+	position: absolute;
+	top:50%;
+	width: 100%;
+	z-index: 1001;
+	margin-top: -200px;
+	.student-list{
+		border-radius:10px 10px 0 0;
+		background: #f0f0f0;
+		margin:0;
+		padding-bottom: 10px;
+	}
+	.student-list-item{
+		border-radius:10px 10px 0 0;
+		background: #fff;
+	}
+	.kcb_item_title .weui-flex__item + .weui-flex__item{
+		border:none;
+	}
+	.student-kcb-content{
+		border-bottom: 1px solid #f0f0f0;
+	}
+}
+.student-btn-group{
+	width: 300px;
+	margin:40px auto;
+	display: flex;
+	justify-content:space-between;
+	.btn{
+		display: block;
+		height: 44px;
+		line-height: 44px;
+		font-size:18px;
+		text-align: center;
+		border-radius:8px;
+		color:#fff;
+		flex-grow:1;
+	}
+	.btn-agree{
+		background: #db4c3e;
+		margin-right: 30px;
+	}
+	.btn-refuse{
+		background: #333;
+	}
+}

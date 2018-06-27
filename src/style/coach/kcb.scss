@@ -4,6 +4,20 @@
 .panel-kcb{
 	background: #fff;
 	margin-top: 10px;
+	line-height: initial;
+	
+}
+.panel-kcb-create{
+	position: relative;
+}
+.kcb_add{
+	position: absolute;
+	right:10px;
+	top: 5px;
+	.icon-add{
+		font-size:26px;
+    	display: inline-block;
+	}
 }
 .panel-header{
 	border-bottom: 1px solid #f0f0f0;

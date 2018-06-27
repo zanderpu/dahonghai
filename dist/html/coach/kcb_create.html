@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我是教练-个人中心</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg">
+    <div id="page" class="coach_body">
+        <div class="panel-kcb">
+            <div class="panel-header weui-flex panel-kcb-create">
+                <div class="weui-flex__item">
+                    <i class="dhhfont icon-kcb"></i>
+                    课程表（科目二）
+                </div>
+                <a href="javascript:;" class="kcb_add"><i class="dhhfont icon-add"></i></a>
+            </div>
+            <div class="kcb_item weui-flex kcb_item_title">
+                <div class="weui-flex__item">时间</div>
+                <div class="weui-flex__item">预约人数</div>
+            </div>
+            <div class="kcb_item weui-flex">
+                <div class="weui-flex__item" v-on:click="onSelectDate">
+                    3月26日
+                    <p>9:00-12:00</p>
+                </div>
+                <div class="weui-flex__item kcb_people_num" v-on:click="onSelectNum">4人</div>
+            </div>
+        </div>
+
+        <div class="panel-kcb">
+            <div class="panel-header weui-flex panel-kcb-create">
+                <div class="weui-flex__item">
+                    <i class="dhhfont icon-kcb"></i>
+                    课程表（科目三）
+                </div>
+                <a href="javascript:;" class="kcb_add"><i class="dhhfont icon-add"></i></a>
+            </div>
+            <div class="kcb_item weui-flex kcb_item_title">
+                <div class="weui-flex__item">时间</div>
+                <div class="weui-flex__item">预约人数</div>
+            </div>
+            <div class="kcb_item weui-flex">
+                <div class="weui-flex__item" v-on:click="onSelectDate">
+                    3月26日
+                    <p>9:00-12:00</p>
+                </div>
+                <div class="weui-flex__item kcb_people_num" v-on:click="onSelectNum">4人</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-tabbar tabbar-coach">
+        <a href="wdxy.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-wdxy"></i>
+            <p class="weui-tabbar__label">我的学员</p>
+        </a>
+        <a href="kcb.html" class="weui-tabbar__item weui-bar__item_on">
+            <i class="weui-tabbar__icon dhhfont icon-kcb"></i>
+            <p class="weui-tabbar__label">课程表</p>
+        </a>
+        <a href="me.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-me"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../style/js/common.js"></script>
+    <script type="text/javascript">
+        var v_page = new Vue({
+            el: '#page',
+            data:{},
+            methods:{
+                onSelectDate:function(){
+                    weui.picker([{
+                        label: '3月26',
+                        value: '3月26'
+                    }, {
+                        label: '3月26',
+                        value: '3月26'
+                    }, {
+                        label: '3月26',
+                        value: '3月26'
+                    }], [{
+                        label: '09:00-12:00',
+                        value: '09:00-12:00'
+                    }, {
+                        label: '14:00-17:00',
+                        value: '14:00-17:00'
+                    }], {
+                        onChange: function onChange(result) {
+                            console.log(result);
+                        },
+                        onConfirm: function onConfirm(result) {
+                            console.log(result);
+                        }
+                    });
+                },
+                onSelectNum:function(){
+                    weui.picker([{
+                        label: '1人',
+                        value: 1
+                    }, {
+                        label: '2人',
+                        value: 2
+                    }, {
+                        label: '3人',
+                        value: 3
+                    }, {
+                        label: '4人',
+                        value: 4
+                    }, {
+                        label: '5人',
+                        value: 5
+                    }, {
+                        label: '6人',
+                        value: 6
+                    }, {
+                        label: '7人',
+                        value: 7
+                    }], {
+                        onConfirm: function onConfirm(result) {
+                            console.log(result);
+                        }
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
