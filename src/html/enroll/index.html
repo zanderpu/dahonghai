@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我是教练-个人中心</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg">
+    <div class="page-content" id="page-content">
+        <div class="page-swiper">
+            <img src="../../style/images/home_swiper.png" style="width: 100%;height: 175px;" alt="">
+        </div>
+        <div class="home_address weui-flex">
+            <div class="home_address_text weui-flex__item">
+                <i class="dhhfont icon-gps"></i>花园酒店渝北店
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <a href="" title="">
+                <i class="dhhfont icon-search"></i>
+            </a>
+        </div>
+
+        <div class="driving_list">
+            <div class="weui-flex driving_list_sort">
+                <div class="weui-flex__item">综合</div>
+                <div class="weui-flex__item">练车近</div>
+                <div class="weui-flex__item">价格低</div>
+                <div class="weui-flex__item">
+                    <a href="" title="">筛选<i class="dhhfont icon-down-trangle"></i></a>
+                </div>
+            </div>
+
+            <div class="driving_lists">
+                <div class="weui-panel__bd">
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg driving_item" v-for="el in listdata">
+                        <div class="weui-media-box__hd driving_item_hd">
+                            <img class="weui-media-box__thumb driving_item_img" src="../../style/images/driving_item_img.png" alt="">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">
+                                桂峰驾校
+                                <i class="image-vip"></i>
+                                <i class="image-auth"></i>
+                            </h4>
+                            <div class="weui-media-box__desc driving_grade">
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <span class="grade">9.8分</span>
+                            </div>
+                            <p class="weui-media-box__desc">最近训练场 江北区 距离我5.8km</p>
+                        </div>
+                        <div class="price">
+                            ￥2480
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="weui-tabbar tabbar-coach">
+        <a href="wdxy.html" class="weui-tabbar__item weui-bar__item_on">
+            <i class="weui-tabbar__icon dhhfont icon-kcb"></i>
+            <p class="weui-tabbar__label">报名</p>
+        </a>
+        <a href="kcb.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-qianzaixueyuan"></i>
+            <p class="weui-tabbar__label">学车中心</p>
+        </a>
+        <a href="me.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-yuechejihua"></i>
+            <p class="weui-tabbar__label">约车</p>
+        </a>
+        <a href="me.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-shangcheng"></i>
+            <p class="weui-tabbar__label">商城</p>
+        </a>
+        <a href="me.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon dhhfont icon-me"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var v_page = new Vue({
+            el: '#page-content',
+            data:{
+                listdata:[{},{},{},{},{}]
+            },
+            methods:{}
+        })
+    </script>
+</body>
+
+</html>
