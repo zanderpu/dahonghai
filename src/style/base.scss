@@ -7,3 +7,11 @@ body{
 .page-content{
 	margin-bottom: 56px;
 }
+.text-center{
+	text-align: center;
+}
+.noscroll,
+.noscroll body {
+    overflow: hidden;
+    position: relative;
+}

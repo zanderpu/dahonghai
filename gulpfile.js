@@ -47,9 +47,14 @@ gulp.task('build:font',function(){
 })
 
 gulp.task('build:js',function(){
-	gulp.src('src/js/**/*')
+	gulp.src(['src/js/**/*','!src/js/zepto.min.js'])
     .pipe(uglify())
     .pipe(concat('common.js'))
+    .pipe(gulp.dest(dist+'/style/js'))
+})
+
+gulp.task('copy:zepto',function(){
+    gulp.src(['src/js/zepto.min.js'])
     .pipe(gulp.dest(dist+'/style/js'))
 })
 
@@ -59,7 +64,7 @@ gulp.task('build:html',function(){
 })
 
 
-gulp.task('watch', [], function() {
+gulp.task('watch', ['copy:zepto'], function() {
     gulp.watch('src/style/**/*', ['build:style']);
     gulp.watch('src/js/**/*', ['build:js']);
     gulp.watch('src/html/**/*', ['build:html']);

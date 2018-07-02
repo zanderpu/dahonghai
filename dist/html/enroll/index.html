@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>我是教练-个人中心</title>
+    <title>驾校报名</title>
     <link rel="stylesheet" href="../../style/css/style.css">
 </head>
 
@@ -29,7 +29,7 @@
                 <div class="weui-flex__item">练车近</div>
                 <div class="weui-flex__item">价格低</div>
                 <div class="weui-flex__item">
-                    <a href="" title="">筛选<i class="dhhfont icon-down-trangle"></i></a>
+                    <a href="javascript:;" v-on:click="onOpenScreen">筛选<i class="dhhfont icon-down-trangle"></i></a>
                 </div>
             </div>
 
@@ -64,12 +64,47 @@
             </div>
 
         </div>
-
+        
+        <div class="list_screen" v-if="showscreen">
+            <div class="list_screen_condition">
+                <div class="condition_panel">
+                    <div class="screen_options_title">驾照类型</div>
+                    <dl class="screen_options" type="checkbox">
+                        <dd><a href="javascript:;" class="screen_option_item active">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                    </dl>
+                </div>
+                <div class="condition_panel">
+                    <div class="screen_options_title">驾校类型</div>
+                    <dl class="screen_options" type="radio">
+                        <dd><a href="javascript:;" class="screen_option_item active">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">认证驾校</a></dd>
+                    </dl>
+                </div>
+                <div class="condition_panel">
+                    <div class="screen_options_title">练车区域</div>
+                    <dl class="screen_options">
+                        <dd><a href="javascript:;" class="screen_option_item active">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                        <dd><a href="javascript:;" class="screen_option_item">不限</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="list_screen_btngroup">
+                <a href="javascript:;" class="clear" v-on:click="onCloseScreen">清空条件</a>
+                <a href="" title="" class="confirm">确定</a>
+            </div>
+        </div>
 
     </div>
 
     <div class="weui-tabbar tabbar-coach">
-        <a href="wdxy.html" class="weui-tabbar__item weui-bar__item_on">
+        <a href="index.html" class="weui-tabbar__item weui-bar__item_on">
             <i class="weui-tabbar__icon dhhfont icon-kcb"></i>
             <p class="weui-tabbar__label">报名</p>
         </a>
@@ -90,16 +125,32 @@
             <p class="weui-tabbar__label">我的</p>
         </a>
     </div>
+
+
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../style/js/zepto.min.js"></script>
+    <script type="text/javascript" src="../../style/js/common.js"></script>
     <script type="text/javascript">
         var v_page = new Vue({
             el: '#page-content',
             data:{
-                listdata:[{},{},{},{},{}]
+                listdata:[{},{},{},{},{}],
+                showscreen:false
             },
-            methods:{}
+            methods:{
+                onOpenScreen:function(){
+                    this.showscreen = true;
+                    smartscroll($('.list_screen'), '.list_screen_condition');
+                    $('html').addClass('noscroll')
+                },
+                onCloseScreen:function(){
+                    this.showscreen = false;
+                    $('html').removeClass('noscroll')
+                }
+            }
         })
+        
     </script>
 </body>
 

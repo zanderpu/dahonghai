@@ -1,0 +1,106 @@
+.class_info{
+	background: #fff;
+	margin-bottom: 10px;
+	.weui-media-box_appmsg .weui-media-box__hd{
+		height: 43px;
+		width: 40px;
+		padding-top: 7px;
+	}
+	.weui-media-box{
+		padding:20px 15px;
+	}
+	.weui-media-box__title{
+		margin-bottom: 5px;
+	}
+	.tag{
+		background: #ffe5e5;
+		font-size:12px;
+		color:#db4c3e;
+		margin-left: 10px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.weui-media-box__ft{
+		text-align: center;
+	}
+	.weui-media-box__desc{
+		font-size:13px;
+	}
+	.price{
+		color: #db4c3e;
+		font-size:18px;
+		font-weight: 700;
+	}
+	.consult_number{
+		color: #666;
+		font-size:14px;
+	}
+}
+.class_icon{
+	height: 40px;
+	width: 40px;
+	background: url(../images/icon_01.png);
+	background-size: cover;
+	text-align: center;
+	line-height: 40px;
+	font-size:20px;
+	color:#fff;
+}
+
+.weui-cells.cells_fixed{
+	color: #232323;
+	font-size:16px;
+	.weui-cell__hd{
+		width: 100px;
+	}
+}
+
+.panel{
+	margin-bottom:10px;
+	background: #fff;
+	.panel_title{
+		padding:15px 15px 15px 25px;
+		font-size:18px;
+		position: relative;
+		&:before{
+			content:' ';
+			width: 6px;
+			height: 24px;
+			position: absolute;
+			background: #e93e3e;
+			left:10px;
+			top:17px;
+		}
+		&.weui-cells{
+			padding:0 0 0 10px;
+			&:before{
+				transform: none;
+				top:10px;
+			}
+			&.noborder:after{
+				border:none;
+			}
+			.weui-cell{
+				background: #fff;
+			}
+		}
+		.link{
+			font-size:14px;
+			color:#999;
+		}
+	}
+	.weui-cells{
+		margin:0;
+	}
+	.weui-panel{
+		margin: 0;
+	}
+	.panel_content{
+		padding:0 15px 15px 15px;
+		color:#232323;
+		font-size:16px;
+	}
+	.panel_footer{
+		padding-bottom:10px;
+	}
+}

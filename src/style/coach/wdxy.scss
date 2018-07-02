@@ -142,8 +142,12 @@
 
 .tabbar-coach{
 	position: fixed;
+	box-shadow:0 0 20px #dad8d8;
+	&:before{
+		display: none;
+	}
 	.weui-tabbar__item{
-		padding:0 0 5px 0;
+		padding:0 0 -5px 0;
 	}
 	.weui-tabbar__label{
 		font-size:13px;
