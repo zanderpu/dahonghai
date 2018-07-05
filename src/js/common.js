@@ -14,3 +14,38 @@ $(function(){
 		}
 	});
 })
+
+
+/**
+ * 下方弹出框
+ */
+$(function(){
+
+	var open = function(content){
+		if(typeof content == 'object'){
+			content = content.html();
+		}
+		var maskobj = $('<div class="weui-mask"></div>').appendTo(document.body);
+		var conentobj = $('<div class="weui-actionsheet">'+content+'</div>').appendTo(document.body);
+		conentobj.addClass('weui-actionsheet_toggle');
+
+		maskobj.addClass('fadein');
+		setTimeout(function(){
+			$('.weui-mask').removeClass('fadein');
+		},200)
+
+		maskobj.on('click',function(event) {
+			event.preventDefault();
+			conentobj.removeClass('weui-actionsheet_toggle');
+			maskobj.addClass('fadeout');
+			setTimeout(function(){
+				$('.weui-mask').remove();
+				$('.weui-actionsheet').remove();
+			},200)
+		});
+	}
+
+	window.actionsheet = {
+		open:open
+	};
+})

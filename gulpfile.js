@@ -53,9 +53,9 @@ gulp.task('build:js',function(){
     .pipe(gulp.dest(dist+'/style/js'))
 })
 
-gulp.task('copy:zepto',function(){
-    gulp.src(['src/js/zepto.min.js'])
-    .pipe(gulp.dest(dist+'/style/js'))
+gulp.task('copy:lib',function(){
+    gulp.src(['src/lib/**/*','src/js/zepto.min.js'])
+    .pipe(gulp.dest(dist+'/style/lib'))
 })
 
 gulp.task('build:html',function(){
@@ -64,7 +64,7 @@ gulp.task('build:html',function(){
 })
 
 
-gulp.task('watch', ['copy:zepto'], function() {
+gulp.task('watch', ['copy:lib'], function() {
     gulp.watch('src/style/**/*', ['build:style']);
     gulp.watch('src/js/**/*', ['build:js']);
     gulp.watch('src/html/**/*', ['build:html']);

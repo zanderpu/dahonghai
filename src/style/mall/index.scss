@@ -1,0 +1,192 @@
+.page-swiper{
+	margin-bottom: 10px;
+}
+.mall_main_navs{
+	padding:15px 10px 5px 10px;
+	background: #fff;
+}
+.mall_main_links{
+	text-align: center;
+	a{
+		color:#232323;
+	}
+	.dhhfont{
+		display: block;
+		margin:0 auto;
+		width:40px;
+		height: 40px;
+		line-height: 40px;
+		border-radius:10px;
+		color:#fff;
+		font-size:24px;
+	}
+	.link_name{
+		font-size:12px;
+		margin:10px 0;
+	}
+	.icon-dianqi{
+		background: #fe842e;
+	}
+	.icon-camera1{
+		background: #fb4f4b;
+	}
+	.icon-beizi{
+		background: #17cdb4;
+	}
+	.icon-jiaju{
+		background: #ffc229;
+	}
+	.icon-naiping{
+		background: #fe842e;
+	}
+	.icon-qunzi{
+		background: #17cdb4;
+	}
+	.icon-nanzhuang{
+		background: #ffc229;
+	}
+	.icon-xiangbao{
+		background: #fe842e;
+	}
+	.icon-gehu{
+		background: #fb4f4b;
+	}
+	.icon-fenlei{
+		background: #17cdb4;
+	}
+}
+
+
+.goods_list{
+	clear: both;
+	overflow: hidden;
+	padding:5px;
+	.goods_item{
+		width:50%;
+		float: left;
+	}
+	.goods_block{
+		display: block;
+		background: #fff;
+		border-radius:6px;
+		margin:5px;
+		color:#232323;
+	}
+	.goods_img{
+		width:100%;
+		height: 120px;
+		display: block;
+	}
+	.goods_info{
+		padding:5px 10px;
+	}
+	.goods_title{
+		font-size:15px;
+		white-space:nowrap;
+	    overflow:hidden;
+	    text-overflow:ellipsis;
+	}
+	.goods_desc{
+		font-size:13px;
+		color:#999;
+		white-space:nowrap;
+	    overflow:hidden;
+	    text-overflow:ellipsis;
+	    margin-bottom: 5px;
+	}
+	.goods_price{
+		font-size:16px;
+		color:#e93e3e;
+		font-weight: 700;
+	}
+}
+
+
+.goods_list_header{
+	background: #fff;
+	margin-bottom: 10px;
+	text-align: center;
+	padding:10px 0;
+	.weui-flex__item{
+		color:#232323;
+		font-size:14px;
+		& + .weui-flex__item{
+			border-left:1px solid #f0f0f0;
+		}
+	}
+	.dhhfont{
+		color: #c23434;
+	}
+	.icon-jiantou.up{
+		display: inline-block;
+		transform:rotate(-180deg);	
+	}
+}
+
+.goods_details_header{
+	background: #fff;
+	padding:10px;
+	.goods_title{
+		margin-bottom: 5px;
+		font-size:16px;
+		color:#232323;
+	}
+	.goods_price{
+		color:#e93e3e;
+		font-size:16px;
+		font-weight: 700;
+	}
+}
+.business_service{
+	background: #fff;
+	border-top: 1px solid #e5e5e5;
+	padding:10px;
+	font-size:15px;
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
+	dt,dd{
+		float: left;
+	}
+	dt{
+		margin-right: 10px;
+	}
+	.service_label{
+		margin-right: 10px;
+		font-size:15px;
+		.dhhfont{
+			color:#ea4646;
+			margin-right: 3px;
+			font-size:15px;
+		}
+	}
+}
+.goods_details_footer{
+	position: fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	background: #fff;
+	height: 50px;
+	line-height: 50px;
+	display: flex;
+	box-shadow: 0 0 5px #ccc;
+	.left{
+		flex:1;
+		padding:0 10px;
+	}
+	.dhhfont{
+		font-size:26px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.link{
+
+		height: 50px;
+		line-height: 50px;
+		width:120px;
+		text-align: center;
+		background: #fe842e;
+		color:#fff;
+	}
+}
