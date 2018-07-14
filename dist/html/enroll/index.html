@@ -80,7 +80,7 @@
 
         </div>
         
-        <div class="list_screen" v-if="showscreen">
+        <div class="list_screen" v-show="showscreen">
             <div class="list_screen_condition">
                 <div class="condition_panel">
                     <div class="screen_options_title">驾照类型</div>
@@ -112,7 +112,7 @@
             </div>
             <div class="list_screen_btngroup">
                 <a href="javascript:;" class="clear" v-on:click="onCloseScreen">清空条件</a>
-                <a href="" title="" class="confirm">确定</a>
+                <a href="javascript:;" title="" class="confirm" v-on:click="onQuery">确定</a>
             </div>
         </div>
 
@@ -163,6 +163,9 @@
                 onCloseScreen:function(){
                     this.showscreen = false;
                     $('html').removeClass('noscroll')
+                },
+                onQuery:function(){
+                    this.showscreen = false;
                 }
             }
         })

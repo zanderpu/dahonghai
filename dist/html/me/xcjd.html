@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>学车进度</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg" ontouchstart>
+    
+    <div class="progress_lists">
+        
+        <div class="progress_item active">
+            <div class="title">
+                资料准备
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <div class="content">
+                fdsafds
+            </div>
+        </div>
+        <div class="progress_item">
+            <div class="title">
+                科目一
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <div class="content">
+                fdsafds
+            </div>
+        </div>
+        <div class="progress_item">
+            <div class="title">
+                科目二
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <div class="content">
+                fdsafds
+            </div>
+        </div>
+        <div class="progress_item">
+            <div class="title">
+                科目三
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <div class="content">
+                fdsafds
+            </div>
+        </div>
+        <div class="progress_item">
+            <div class="title">
+                科目四
+                <i class="dhhfont icon-down-trangle"></i>
+            </div>
+            <div class="content">
+                fdsafds
+            </div>
+        </div>
+    </div>
+    <div class="tips">
+        <div class="title">温馨提示：</div>
+        <p>1.报考科目二考试：必须从科目一考试合格的当天起满10个工作日并且学时必须满16个学时</p>
+        <p>2.报考科目三考试：必须完成24个学时</p>
+        <p>3.满足以上条件且科目三考试合格后可根据考场当天安排参加“安全文明”考试</p>
+    </div>
+
+    <script src="../../style/lib/zepto.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.progress_lists').delegate('.title', 'click', function(event) {
+                $('.progress_lists .active').removeClass('active');
+                $(this).parent('.progress_item').addClass('active');
+            });
+        })
+    </script>
+</body>
+
+</html>

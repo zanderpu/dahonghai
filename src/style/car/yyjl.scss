@@ -1,0 +1,134 @@
+.car-list-header{
+	font-size:13px;
+}
+.car-coach-list{
+	.student-list-item{
+		.weui-badge{
+			font-size:14px;
+			margin:3px 0 0 0;
+			line-height: inherit;
+			height: 20px;
+			vertical-align: middle;
+			margin-left: 10px;
+		}
+		.icon-man{
+			color:#3380de;
+		}
+	}
+	.evaluate{
+		.icon-xingxing{
+			font-size:14px;
+			color:#db4c3e;
+		}
+		.label{
+			font-size:14px;
+		}
+	}
+	.tags{
+		.tag{
+			display: inline-block;
+			background: #f8dbd8;
+			color:#db4c3e;
+			border-radius:6px;
+			font-size:13px;
+			padding:0 5px;
+		}
+	}
+	.weui-panel__bd{
+		background: #fff;
+		margin-bottom: 10px;
+	}
+	.me_header_items{
+		padding:10px 0;
+	}
+	.stress{
+		font-size:16px;
+		color:#232323;
+	}
+}
+
+.car-coach-info{
+	.car-coach-list .weui-panel__bd{
+		margin-bottom: 0;
+	}
+	.student-list .weui-media-box{
+		margin-bottom: 0;
+	}
+	.reserve_state{
+		text-align: center;
+		padding:20px 0;
+		color:#0ad000;
+	}
+	.icon-xuanzhong{
+		margin-right: 5px;
+		font-size:22px;
+		vertical-align: middle;
+	}
+}
+
+.me_carcoach{
+	.student-list{
+		margin: 0;
+		padding:0 10px;
+		background: #fff;
+		.weui-media-box{
+			padding:10px 0;
+		}
+	}
+	.kcb_people_num{
+		padding:0;
+	}
+	.weui-flex{
+		align-items: center;
+	}
+	.weui-flex__item{
+		&.danger{
+			background: #db4c3e;
+			a{
+				color: #fff;
+				display: block;
+				height: 40px;
+				line-height: 40px;
+			}
+		}
+	}
+	.weui-flex__item.disable{
+		background: #e5e5e5;
+		color: #999;
+		height: 40px;
+		line-height: 40px;
+	}
+}
+
+.panel-caraddress{
+	margin-top: 10px;
+	.panel_content{
+		padding-top: 10px;
+	}
+	a{
+		color:#232323;
+		font-size:14px;
+	}
+	.icon-mapgps{
+		font-size:18px;
+	}
+	.icon-gps{
+		font-size:18px;
+		color: #db4c3e;
+		display: inline-block;
+		margin:-3px -5px 0 0;
+		vertical-align: middle;
+	}
+}
+
+.evaluate_coach{
+	height: 48px;
+	line-height: 48px;
+	position: fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	text-align: center;
+	background: #db4c3e;
+	color: #fff;
+}

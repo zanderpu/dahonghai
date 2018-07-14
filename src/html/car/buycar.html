@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>买车</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg" ontouchstart>
+    <div id="page-content" >
+
+	    <div class="buycar_search">
+	    	<i class="weui-icon-search"></i>
+	    	<input type="text" class="weui-input input" name="" value="" placeholder="输入品牌或车型">
+	    </div>
+	    <div class="mall_main_navs">
+	        <div class="weui-flex mall_main_links">
+	            <a class="weui-flex__item" href="">
+	                <i class="dhhfont icon-fangxiangpan"></i>
+	                <p class="link_name">预约试驾</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <i class="dhhfont icon-chexianbijia"></i>
+	                <p class="link_name">新车快速报价</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <i class="dhhfont icon-woyaotaoche"></i>
+	                <p class="link_name">淘二手好车</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <i class="dhhfont icon-chexian-baoxian"></i>
+	                <p class="link_name">底价车险</p>
+	            </a>
+	        </div>
+	    </div>
+
+	    <div class="car_model_select">
+	    	<div class="weui-flex mall_main_links">
+	            <a class="weui-flex__item" href="">
+	                <img class="car_icon" src="../../style/images/chebiao.jpg" alt="">
+	                <p class="link_name">奥迪</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_icon" src="../../style/images/yiqi.jpg" alt="">
+	                <p class="link_name">观致</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_icon" src="../../style/images/chebiao.jpg" alt="">
+	                <p class="link_name">现代</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_icon" src="../../style/images/yiqi.jpg" alt="">
+	                <p class="link_name">日产</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_icon" src="../../style/images/chebiao.jpg" alt="">
+	                <p class="link_name">福特</p>
+	            </a>
+	        </div>
+	        <div class="weui-flex mall_main_links">
+	            <a class="weui-flex__item" href="">
+	                <img class="car_model_icon" src="../../style/images/chexing.jpg" alt="">
+	                <p class="link_name">奥迪A4L</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_model_icon" src="../../style/images/chexing.jpg" alt="">
+	                <p class="link_name">斯巴鲁XV</p>
+	            </a>
+	            <a class="weui-flex__item" href="">
+	                <img class="car_model_icon" src="../../style/images/chexing.jpg" alt="">
+	                <p class="link_name">英菲尼迪EXQ</p>
+	            </a>
+	        </div>
+	        <div class="weui-flex mall_main_links select_items">
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">8-15万</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">15-20万</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">20-30万</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">30-50万</p>
+	            </a>
+	        </div>
+	        <div class="weui-flex mall_main_links select_items">
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">紧凑型</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">SUV</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">中型车</p>
+	            </a>
+	            <a class="weui-flex__item select_item" href="">
+	                <p class="link_name">更多条件</p>
+	            </a>
+	        </div>
+	    </div>
+	    
+	    <div v-for="el in listdata">
+	    	
+	    
+		    <div class="weui-cells__title" v-bind:id="el">{{el}}</div>
+		    <div class="weui-cells car_model_lists">
+
+		        <a class="weui-cell weui-cell_access" href="javascript:;">
+		            <div class="weui-cell__hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+		            <div class="weui-cell__bd">
+		                <p>cell standard</p>
+		            </div>
+		            <div class="weui-cell__ft">说明文字</div>
+		        </a>
+		        <a class="weui-cell weui-cell_access" href="javascript:;">
+		            <div class="weui-cell__hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+		            <div class="weui-cell__bd">
+		                <p>cell standard</p>
+		            </div>
+		            <div class="weui-cell__ft">说明文字</div>
+		        </a>
+		    </div>
+		
+		</div>
+
+		<div class="car_sidebar">
+			<a v-for="el in listdata" v-bind:href='"#"+el' v-on:click="onSelect(el)">{{el}}</a>
+		</div>
+		
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../style/lib/zepto.min.js"></script>
+    <script type="text/javascript" src="../../style/js/common.js"></script>
+    <script type="text/javascript">
+        var v_page = new Vue({
+            el: '#page-content',
+            data:{
+            	listdata:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+            },
+            methods:{
+            	onSelect:function(el){
+            		$('<div class="selected_show">'+el+'</div>').appendTo(document.body);
+            		setTimeout(function(){
+            			$('.selected_show').remove();
+            		},500)
+            	}
+            }
+        })
+
+
+    </script>      
+</body>
+
+</html>

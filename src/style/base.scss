@@ -1,6 +1,9 @@
 body{
 	color:#232323;
 }
+a{
+	color:#232323;
+}
 .gray-bg{
 	background: #f0f0f0;
 }
@@ -15,6 +18,26 @@ body{
     overflow: hidden;
     position: relative;
 }
+
+.text-success{
+	color: #0ad000;
+}
+
+
+.btn{
+	display: inline-block;
+	font-size:14px;
+	padding:6px 14px;
+	border-radius:2px;
+}
+.btn-danger{
+	background: #FF4F53;
+	color: #fff;
+}
+
+
+
+
 
 .fadein{
 	opacity: 1;

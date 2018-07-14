@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>预约教练</title>
+    <link rel="stylesheet" href="../../style/css/style.css">
+</head>
+
+<body class="gray-bg">
+    <div id="page">
+        <div class="list-filter">
+            <div class="weui-flex list-filter-header car-list-header">
+                <div class="weui-flex__item" v-on:click="onFilter(1)">
+                    区域<i class="dhhfont icon-down-trangle"></i>
+                </div>
+                <div class="weui-flex__item" v-on:click="onFilter(2)">
+                    驾照类型<i class="dhhfont icon-down-trangle"></i>
+                </div>
+                <div class="weui-flex__item" v-on:click="onFilter(3)">
+                    性别<i class="dhhfont icon-down-trangle"></i>
+                </div>
+                <div class="weui-flex__item" v-on:click="onFilter(4)">
+                    智能选项<i class="dhhfont icon-down-trangle"></i>
+                </div>
+            </div>
+        </div>
+        <div class="weui-mask weui-animate-fade-in list-filter-choice-mask" v-if="filter>0" v-on:click="onCancelFilter"></div>
+        <div class="list-filter-choice" v-if="filter>0">
+            <div class="filter-types" v-if="filter==2">
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>C1</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>C2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-types" v-if="filter==3">
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>男</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>女</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-types" v-if="filter==4">
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>正在进行</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>已完成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="student-list car-coach-list">
+            <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_appmsg student-list-item" v-on:click="onShowInfo(true)">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../../style/images/avater_coach2.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <div class="weui-media-box__title weui-flex">
+                            <div>王小林</div>
+                            <span class="weui-badge">C1</span>
+                            <div class="weui-flex__item distance">
+                                <i class="dhhfont icon-gps"></i>4.21km
+                            </div>
+                        </div>
+                        <div class="secondary-title">
+                            <div class="evaluate">
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <i class="dhhfont icon-xingxing"></i>
+                                <span class="label">9.8分</span>
+                                <i class="dhhfont icon-man"></i>
+                                <!-- <i class="dhhfont icon-girl"></i> -->
+                            </div>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">技术牛</span>
+                            <span class="tag">待人和善</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex me_header_items" v-on:click="onShowInfo(true)">
+                    <div class="weui-flex__item">
+                        教龄
+                        <p class="stress">10年</p>
+                    </div>
+                    <div class="weui-flex__item">
+                        通过考试率
+                        <p class="stress">87.5%</p>
+                    </div>
+                    <div class="weui-flex__item">
+                        已拿证人数
+                        <p class="stress">876人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="weui-tabbar tabbar-coach">
+            <a href="index.html" class="weui-tabbar__item">
+                <i class="weui-tabbar__icon dhhfont icon-kcb"></i>
+                <p class="weui-tabbar__label">报名</p>
+            </a>
+            <a href="kcb.html" class="weui-tabbar__item">
+                <i class="weui-tabbar__icon dhhfont icon-qianzaixueyuan"></i>
+                <p class="weui-tabbar__label">学车中心</p>
+            </a>
+            <a href="me.html" class="weui-tabbar__item weui-bar__item_on">
+                <i class="weui-tabbar__icon dhhfont icon-yuechejihua"></i>
+                <p class="weui-tabbar__label">约车</p>
+            </a>
+            <a href="me.html" class="weui-tabbar__item">
+                <i class="weui-tabbar__icon dhhfont icon-shangcheng"></i>
+                <p class="weui-tabbar__label">商城</p>
+            </a>
+            <a href="me.html" class="weui-tabbar__item">
+                <i class="weui-tabbar__icon dhhfont icon-me"></i>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+
+        <div class="weui-mask weui-animate-fade-in" v-if="showinfo" v-on:click="onShowInfo(false)"></div>
+        <div class="student-info car-coach-info" v-if="showinfo">
+            <div class="student-list car-coach-list">
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_appmsg student-list-item" v-on:click="onShowInfo(true)">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../../style/images/avater_coach2.png" alt="">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <div class="weui-media-box__title weui-flex">
+                                <div>王小林</div>
+                                <span class="weui-badge">C1</span>
+                                <div class="weui-flex__item distance">
+                                    <i class="dhhfont icon-gps"></i>4.21km
+                                </div>
+                            </div>
+                            <div class="secondary-title">
+                                <div class="evaluate">
+                                    <i class="dhhfont icon-xingxing"></i>
+                                    <i class="dhhfont icon-xingxing"></i>
+                                    <i class="dhhfont icon-xingxing"></i>
+                                    <i class="dhhfont icon-xingxing"></i>
+                                    <i class="dhhfont icon-xingxing"></i>
+                                    <span class="label">9.8分</span>
+                                    <i class="dhhfont icon-man"></i>
+                                    <!-- <i class="dhhfont icon-girl"></i> -->
+                                </div>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">技术牛</span>
+                                <span class="tag">待人和善</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kcb_item weui-flex kcb_item_title">
+                <div class="weui-flex__item">时间</div>
+                <div class="weui-flex__item">场地</div>
+                <div class="weui-flex__item">学习种类</div>
+            </div>
+            <div class="kcb_item weui-flex student-kcb-content">
+                <div class="weui-flex__item">
+                    3月26日
+                    <p class="stress">9:00-12:00</p>
+                </div>
+                <div class="weui-flex__item kcb_people_num">松树桥场地</div>
+                <div class="weui-flex__item kcb_people_num">科目二</div>
+            </div>
+            <div class="reserve_state"><i class="dhhfont icon-xuanzhong"></i>您的预约，教练已同意</div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../style/lib/zepto.min.js"></script>
+    <script type="text/javascript" src="../../style/js/common.js"></script>
+    <script type="text/javascript">
+        var v_page = new Vue({
+            el: '#page',
+            data:{
+                filter:0,
+                showinfo:false
+            },
+            methods:{
+                onCancelFilter:function(){
+                    v_page.filter = 0;
+                },
+                onFilter:function(index){
+                    if(index==1){
+                        weui.picker([
+                        {
+                            label: '飞机票',
+                            value: 0,
+                            children: [
+                                {
+                                    label: '经济舱',
+                                    value: 1
+                                },
+                                {
+                                    label: '商务舱',
+                                    value: 2
+                                }
+                            ]
+                        },
+                        {
+                            label: '火车票',
+                            value: 1,
+                            children: [
+                                {
+                                    label: '卧铺',
+                                    value: 1
+                                },
+                                {
+                                    label: '坐票',
+                                    value: 2
+                                },
+                                {
+                                    label: '站票',
+                                    value: 3
+                                }
+                            ]
+                        },
+                        {
+                            label: '汽车票',
+                            value: 3,
+                            children: [
+                                {
+                                    label: '快班',
+                                    value: 1
+                                },
+                                {
+                                    label: '普通',
+                                    value: 2
+                                }
+                            ]
+                        }
+                        ], {
+                           container: 'body',
+                           defaultValue: [1, 3],
+                           onChange: function (result) {
+                               console.log(result)
+                           },
+                           onConfirm: function (result) {
+                               console.log(result)
+                           }
+                        });
+                    }else{
+                        v_page.filter = index;
+                    }
+                },
+                onShowInfo:function(showinfo){
+                    v_page.showinfo = showinfo;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
