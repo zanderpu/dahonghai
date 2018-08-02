@@ -1,0 +1,30 @@
+.carlist_products{
+	margin-top: 0;
+	.weui-media-box__hd{
+		width: 80px;
+		height: 80px;
+	}
+	.weui-media-box__title{
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 2;
+	    white-space: inherit;
+	    line-height: 1.2;
+	    margin-bottom: 10px;
+	}
+	.price{
+		font-size:16px;
+		color:#ED484A;
+	}
+	.collection_btn{
+		display: inline-block;
+		padding:4px 6px;
+		background: #ED484A;
+		color:#fff;
+		font-size:11px;
+		border-radius:4px;
+		float: right;
+	}
+}

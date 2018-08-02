@@ -36,7 +36,23 @@ a{
 }
 
 
-
+.news_list{
+	.weui-media-box__hd{
+		width: 100px;
+		height: 80px;
+	}
+	.weui-media-box__title{
+		text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 2;
+	    white-space: inherit;
+		margin-bottom: 10px;
+	}
+	.datetime{
+		margin-left: 20px;
+	}
+}
 
 
 .fadein{
